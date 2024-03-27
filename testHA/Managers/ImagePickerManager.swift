@@ -30,23 +30,6 @@ open class ImagePickerManager: NSObject {
         self.pickerController.allowsEditing = false
         self.pickerController.mediaTypes = ["public.image"]
     }
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
-    }
-    
-    @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save finished!")
-    }
-    private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
-        guard UIImagePickerController.isSourceTypeAvailable(type) else {
-            return nil
-        }
-        
-        return UIAlertAction(title: title, style: .default) { [unowned self] _ in
-            self.pickerController.sourceType = type
-            self.presentationController?.present(self.pickerController, animated: true)
-        }
-    }
     
     public func present() {
         
@@ -64,9 +47,26 @@ open class ImagePickerManager: NSObject {
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        
-        
         self.presentationController?.present(alertController, animated: true)
+    }
+    
+    func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
+    }
+    
+    @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
+    }
+    
+    private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
+        guard UIImagePickerController.isSourceTypeAvailable(type) else {
+            return nil
+        }
+        
+        return UIAlertAction(title: title, style: .default) { [unowned self] _ in
+            self.pickerController.sourceType = type
+            self.presentationController?.present(self.pickerController, animated: true)
+        }
     }
     
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
@@ -92,4 +92,5 @@ extension ImagePickerManager: UIImagePickerControllerDelegate {
 }
 
 extension ImagePickerManager: UINavigationControllerDelegate {
+    
 }

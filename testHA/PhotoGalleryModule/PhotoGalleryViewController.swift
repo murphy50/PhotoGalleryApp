@@ -48,7 +48,6 @@ class PhotoGalleryViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         
-        // Add gestures to imageView
         addGestures()
         
         frameView.addSubview(imageView)

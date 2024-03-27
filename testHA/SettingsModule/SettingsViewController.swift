@@ -16,14 +16,13 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupUI() {
-        // Setup UITableView
+        // UITableView
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
 
-        // navigation bar Add button
         navigationItem.title = "Settings"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
