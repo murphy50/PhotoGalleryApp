@@ -15,7 +15,7 @@
 		0D4499342BB1E09500356856 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499332BB1E09500356856 /* PhotoGalleryViewController.swift */; };
 		0D4499392BB1E09600356856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4499382BB1E09600356856 /* Assets.xcassets */; };
 		0D44993C2BB1E09600356856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D44993A2BB1E09600356856 /* LaunchScreen.storyboard */; };
-		0D4499442BB3534200356856 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499432BB3534200356856 /* MainTabBarController.swift */; };
+		0D4499442BB3534200356856 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499432BB3534200356856 /* AppCoordinator.swift */; };
 		0D4499462BB3541500356856 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499452BB3541500356856 /* SettingsViewController.swift */; };
 		0D4499482BB3543C00356856 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499472BB3543C00356856 /* SettingsViewModel.swift */; };
 		0D44994A2BB35A6A00356856 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4499492BB35A6A00356856 /* SettingsModel.swift */; };
@@ -32,7 +32,7 @@
 		0D4499382BB1E09600356856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D44993B2BB1E09600356856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D44993D2BB1E09600356856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D4499432BB3534200356856 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		0D4499432BB3534200356856 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0D4499452BB3541500356856 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0D4499472BB3543C00356856 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0D4499492BB35A6A00356856 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			children = (
 				0D44992F2BB1E09500356856 /* AppDelegate.swift */,
 				0D4499312BB1E09500356856 /* SceneDelegate.swift */,
-				0D4499432BB3534200356856 /* MainTabBarController.swift */,
+				0D4499432BB3534200356856 /* AppCoordinator.swift */,
 				0D3911182BB45FD700EB5E3D /* PhotoGalleryModule */,
 				0D3911192BB45FEA00EB5E3D /* SettingsModule */,
 				0D39111A2BB4626300EB5E3D /* Managers */,
@@ -181,7 +181,7 @@
 			files = (
 				0D4499342BB1E09500356856 /* PhotoGalleryViewController.swift in Sources */,
 				0D4499302BB1E09500356856 /* AppDelegate.swift in Sources */,
-				0D4499442BB3534200356856 /* MainTabBarController.swift in Sources */,
+				0D4499442BB3534200356856 /* AppCoordinator.swift in Sources */,
 				0D4499462BB3541500356856 /* SettingsViewController.swift in Sources */,
 				0D3911152BB45F7000EB5E3D /* PhotoGalleryViewModel.swift in Sources */,
 				0D4499322BB1E09500356856 /* SceneDelegate.swift in Sources */,
@@ -338,8 +338,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.<";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -366,8 +365,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.<";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
