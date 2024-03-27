@@ -13,12 +13,11 @@ class PhotoGalleryViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var viewModel: PhotoGalleryViewModel!
+    var viewModel: PhotoGalleryViewModel!
     private var imageView: UIImageView!
     private var frameView: UIView!
     private var panGesture: UIPanGestureRecognizer!
     private var pinchGesture: UIPinchGestureRecognizer!
-    private var imagePicker: ImagePickerManager!
     
     // MARK: - View Lifecycle
     
@@ -26,8 +25,6 @@ class PhotoGalleryViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupNavigationBar()
-        setupImagePicker()
-        bindViewModel()
     }
     
     // MARK: - UI Setup
@@ -66,27 +63,16 @@ class PhotoGalleryViewController: UIViewController {
         imageView.addGestureRecognizer(panGesture)
         imageView.addGestureRecognizer(pinchGesture)
     }
-    
-    // MARK: - ViewModel Setup
-    
-    private func setupImagePicker() {
-        imagePicker = ImagePickerManager(presentationController: self, delegate: self)
-    }
-    
-    private func bindViewModel() {
-        viewModel = PhotoGalleryViewModel(model: PhotoGalleryModel(image: nil))
-        viewModel.image = imageView.image
-    }
-    
+   
     // MARK: - Actions
     
     @objc private func addButtonTapped() {
-        imagePicker.present()
+        viewModel.addButtonAction()
     }
     
     @objc private func saveButtonTapped() {
         guard let clippedImage = clipImage() else { return }
-        imagePicker.writeToPhotoAlbum(image: clippedImage)
+        viewModel.saveButtonAction(clippedImage)
     }
     
     // MARK: - Gesture Handlers

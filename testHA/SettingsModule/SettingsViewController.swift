@@ -3,9 +3,7 @@
 //  testHA
 //
 //  Created by murphy on 26.03.2024.
-//
-// SettingsViewController.swift
-// SettingsViewController.swift
+
 import UIKit
 
 class SettingsViewController: UIViewController {
@@ -25,12 +23,12 @@ class SettingsViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
 
-        // Add "Add" button to the navigation bar
+        // navigation bar Add button
         navigationItem.title = "Settings"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
 
-    // Handle "Add" button tap to add a new cell
+    // Handle Add button tap to add a new cell
     @objc func addButtonTapped() {
         let alertController = UIAlertController(title: "Enter Developer's Name", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -40,7 +38,6 @@ class SettingsViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
             guard let developerName = alertController.textFields?.first?.text, !developerName.isEmpty else {
-                // Handle empty name input
                 return
             }
             self?.viewModel.addDeveloper(withName: developerName)
@@ -56,7 +53,6 @@ class SettingsViewController: UIViewController {
 // MARK: - UITableView Delegate & DataSource
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section
         return viewModel.numberOfDevelopers
     }
 
@@ -68,6 +64,5 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Handle row selection if needed
     }
 }

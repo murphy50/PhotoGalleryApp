@@ -5,7 +5,6 @@
 //  Created by murphy on 26.03.2024.
 //
 
-// SettingsViewModel.swift
 import Foundation
 
 class SettingsViewModel {
