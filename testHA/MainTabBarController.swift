@@ -13,8 +13,8 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         let photoGalleryVC = PhotoGalleryViewController()
-        let imagePicker = ImagePickerManager(presentationController: photoGalleryVC, delegate: photoGalleryVC)
-        let photoGalleryViewModel = PhotoGalleryViewModel(model: PhotoGalleryModel(image: nil))
+        let photoGalleryViewModel = PhotoGalleryViewModel()
+        let imagePicker = ImagePickerManager(presentationController: photoGalleryVC, delegate: photoGalleryViewModel)
         photoGalleryViewModel.imagePicker = imagePicker
         photoGalleryVC.viewModel = photoGalleryViewModel
         

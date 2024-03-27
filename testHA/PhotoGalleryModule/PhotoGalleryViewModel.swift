@@ -6,24 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class PhotoGalleryViewModel {
+    @Published var image: UIImage?
     
-    private var model: PhotoGalleryModel
     var imagePicker: ImagePickerManager!
-    
-    init(model: PhotoGalleryModel) {
-        self.model = model
-    }
-    
-    var image: UIImage? {
-        get { return model.image }
-        set { model.image = newValue }
-    }
-    
-    func setImage(_ image: UIImage?) {
-        model.image = image
-    }
     
     func addButtonAction() {
         imagePicker.present()
@@ -32,5 +20,10 @@ class PhotoGalleryViewModel {
     func saveButtonAction(_ savedImage: UIImage) {
         imagePicker.writeToPhotoAlbum(image: savedImage)
     }
-    
+}
+
+extension PhotoGalleryViewModel: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.image = image
+    }
 }

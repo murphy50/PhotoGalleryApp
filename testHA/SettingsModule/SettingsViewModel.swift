@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 class SettingsViewModel {
-    private var developers: [Developer] = [Developer(name: "John"), Developer(name: "Mike")]
+    @Published var developers: [Developer] = [Developer(name: "John"), Developer(name: "Mike")]
 
     var numberOfDevelopers: Int {
         return developers.count

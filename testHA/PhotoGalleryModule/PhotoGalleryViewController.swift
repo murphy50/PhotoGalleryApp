@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class PhotoGalleryViewController: UIViewController {
     
@@ -17,12 +18,19 @@ class PhotoGalleryViewController: UIViewController {
     private var panGesture: UIPanGestureRecognizer!
     private var pinchGesture: UIPinchGestureRecognizer!
     
+    // MARK: - Subscribers
+    
+    private var imageSubscriber: AnyCancellable?
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupNavigationBar()
+        imageSubscriber = viewModel.$image
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.image, on: imageView)
     }
     
     // MARK: - UI Setup
@@ -44,7 +52,7 @@ class PhotoGalleryViewController: UIViewController {
         frameView.layer.borderWidth = 2.0
         frameView.clipsToBounds = true
         
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frameView.frame.width, height: frameView.frame.height))
+        imageView = UIImageView(frame: CGRect(x: -frameView.frame.origin.x, y: -frameView.frame.origin.y, width: view.frame.width, height: view.frame.height))
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         
@@ -60,7 +68,7 @@ class PhotoGalleryViewController: UIViewController {
         imageView.addGestureRecognizer(panGesture)
         imageView.addGestureRecognizer(pinchGesture)
     }
-   
+    
     // MARK: - Actions
     
     @objc private func addButtonTapped() {
@@ -116,14 +124,5 @@ class PhotoGalleryViewController: UIViewController {
         }
         
         return clippedImage
-    }
-}
-
-extension PhotoGalleryViewController: ImagePickerDelegate {
-    
-    func didSelect(image: UIImage?) {
-        viewModel.setImage(image)
-        imageView.image = viewModel.image
-        imageView.frame = CGRect(x: -frameView.frame.origin.x, y: -frameView.frame.origin.y, width: view.frame.width, height: view.frame.height)
     }
 }
